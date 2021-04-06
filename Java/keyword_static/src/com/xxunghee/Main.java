@@ -1,4 +1,4 @@
-package com.company;
+package com.xxunghee;
 
 public class Main {
     static class Static {
