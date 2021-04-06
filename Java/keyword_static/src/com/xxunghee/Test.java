@@ -1,4 +1,4 @@
-package com.company;
+package com.xxunghee;
 
 public class Test implements Contract{
     static int sa = 0;

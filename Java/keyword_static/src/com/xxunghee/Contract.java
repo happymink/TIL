@@ -1,4 +1,4 @@
-package com.company;
+package com.xxunghee;
 
 public interface Contract {
     static void staticOverrideTest() {
