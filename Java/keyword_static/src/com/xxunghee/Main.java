@@ -51,6 +51,5 @@ public class Main {
 
         System.out.println(t.sa); // value: 100
         System.out.println(t.a);  // value:  0
-
     }
 }
