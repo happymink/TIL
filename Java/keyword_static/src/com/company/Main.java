@@ -42,5 +42,14 @@ public class Main {
 
         Test.nonStaticTest();   // ERROR   : non-static method는 인스턴스 생성 후 접근 가능
         test.nonStaticTest();   // OK
+
+        // sa와 a를 100으로 설정(초기값: sa = 0, a = 0)
+        test.sa = 100;
+        test.a = 100;
+
+        Test t = new Test();
+
+        System.out.println(t.sa); // value: 100
+        System.out.println(t.a);  // value:  0
     }
 }
