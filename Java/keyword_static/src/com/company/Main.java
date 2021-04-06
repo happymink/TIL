@@ -35,6 +35,12 @@ public class Main {
     }
 
     public static void main(String[] args) {
+        Test test = new Test();
 
+        Test.staticTest();      // OK
+        test.staticTest();      // WARNING : static method는 인스턴스 없이 접근 가능
+
+        Test.nonStaticTest();   // ERROR   : non-static method는 인스턴스 생성 후 접근 가능
+        test.nonStaticTest();   // OK
     }
 }
