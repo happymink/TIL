@@ -1,8 +1,8 @@
 package com.company;
 
 public class Test implements Contract{
-    static int sa;
-    int a;
+    static int sa = 0;
+    int a = 0;
 
     public static void staticTest() {
         sa = 1; // OK
