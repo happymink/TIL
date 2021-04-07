@@ -25,3 +25,7 @@ public final class Final {
         return this.abc; // OK
     }
 }
+
+class InheritanceTest extends Final {
+    // ERROR : final class 상속 불가
+}
