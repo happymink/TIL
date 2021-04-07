@@ -1,6 +1,17 @@
 package com.xxunghee;
 
+/**
+ * @author xxunghee
+ */
 public class Main {
+    /**
+     * <h1>Add Method</h1>
+     * This is addition method.
+     *
+     * @param a  This is 1st parameter.
+     * @param b  This is 2nd parameter.
+     * @return   This returns the sum of a and b.
+     */
     public static int add(int a, int b) {
         return a+b;
     }
