@@ -28,4 +28,10 @@ public class Main extends Methods{
         // ERROR : final method 오버라이딩 불가
         super.finalMethod();
     }
+
+    @Override
+    public void func() {
+        // ERROR : Methods class에서 final로 선언했기 때문에 오버라이딩 불가
+        super.func();
+    }
 }
