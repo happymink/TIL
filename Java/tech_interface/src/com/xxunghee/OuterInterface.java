@@ -5,7 +5,7 @@ public interface OuterInterface {
 
     void outer();
 
-    interface InnerInterface {
+    interface InnerInterface extends BaseInterface{
         String loc = "INNER";
 
         void inner();
