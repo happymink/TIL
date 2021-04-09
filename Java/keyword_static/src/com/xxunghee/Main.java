@@ -18,7 +18,7 @@ public class Main {
     }
 
     class C extends Main {
-        // (non-static) C -> (non-static) Main          ==> OK
+        // (non-static) C -> (???) Main                 ==> OK
     }
 
     static class SA extends Static {
@@ -30,8 +30,8 @@ public class Main {
         // static class는 non-static class를 상속 받을 수 없음
     }
 
-    static class SC extends Main {
-        // (static) SC -> (static) Main                 ==> OK
+    static class SC extends Test{
+        // (static) SC -> (???) Test                    ==> OK
     }
 
     public static void main(String[] args) {
