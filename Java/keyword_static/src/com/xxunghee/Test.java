@@ -1,6 +1,6 @@
 package com.xxunghee;
 
-public class Test implements Contract{
+public class Test implements Contract {
     static int sa = 0;
     int a = 0;
 
