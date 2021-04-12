@@ -1,4 +1,4 @@
-package kr.xxunghee.pattern_mvc;
+package kr.xxunghee.mvc;
 
 import android.content.Context;
 
