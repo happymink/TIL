@@ -7,49 +7,22 @@
     tools:context=".MainActivity"
     tools:ignore="RtlSymmetry">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/screen"
+    <TextView
+        android:id="@+id/tv_result"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:background="@color/teal_700"
+        android:gravity="end|center_vertical"
+        android:maxLines="1"
+        android:paddingEnd="20dp"
+        android:background="@color/gray_90"
+        android:text="@string/default_result"
+        android:textColor="@color/white"
+        android:textSize="50sp"
+        android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHeight_percent="0.3"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <TextView
-            android:id="@+id/tv_formula"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:background="@color/gray_70"
-            android:gravity="start|center_vertical"
-            android:maxLines="1"
-            android:paddingStart="20dp"
-            android:textColor="@color/white"
-            android:textSize="20sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHeight_percent="0.3"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <TextView
-            android:id="@+id/tv_result"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:gravity="end|center_vertical"
-            android:maxLines="1"
-            android:paddingEnd="20dp"
-            android:background="@color/gray_90"
-            android:text="@string/default_result"
-            android:textColor="@color/white"
-            android:textSize="50sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/tv_formula" />
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        app:layout_constraintTop_toTopOf="parent" />
 
     <!-- ====== row 0 ====== -->
 
@@ -66,7 +39,7 @@
         app:layout_constraintEnd_toStartOf="@id/btn_sign"
         app:layout_constraintHorizontal_chainStyle="spread_inside"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/screen" />
+        app:layout_constraintTop_toBottomOf="@id/tv_result" />
 
     <TextView
         android:id="@+id/btn_sign"
@@ -80,7 +53,7 @@
         app:layout_constraintBottom_toTopOf="@id/num_8"
         app:layout_constraintEnd_toStartOf="@id/btn_mod"
         app:layout_constraintStart_toEndOf="@id/btn_ac"
-        app:layout_constraintTop_toBottomOf="@id/screen" />
+        app:layout_constraintTop_toBottomOf="@id/tv_result" />
 
     <TextView
         android:id="@+id/btn_mod"
@@ -94,7 +67,7 @@
         app:layout_constraintBottom_toTopOf="@id/num_9"
         app:layout_constraintEnd_toStartOf="@id/btn_div"
         app:layout_constraintStart_toEndOf="@id/btn_sign"
-        app:layout_constraintTop_toBottomOf="@id/screen" />
+        app:layout_constraintTop_toBottomOf="@id/tv_result" />
 
     <TextView
         android:id="@+id/btn_div"
@@ -108,7 +81,7 @@
         app:layout_constraintBottom_toTopOf="@id/btn_mul"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/btn_mod"
-        app:layout_constraintTop_toBottomOf="@id/screen" />
+        app:layout_constraintTop_toBottomOf="@id/tv_result" />
 
     <!-- ====== row 1 ====== -->
 

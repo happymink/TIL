@@ -7,7 +7,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
-    private TextView tvFormula, tvResult;
+    private TextView tvResult;
     private TextView btnAC, btnSign, btnMod, btnDiv, btnMul, btnSub, btnAdd, btnDot, btnResult;
     private TextView num0, num1, num2, num3, num4, num5, num6, num7, num8, num9;
 
@@ -24,7 +24,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         // screen
-        tvFormula = findViewById(R.id.tv_formula);
         tvResult  = findViewById(R.id.tv_result);
 
         // calc button
