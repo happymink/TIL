@@ -1,48 +1,40 @@
 package com.xxunghee.mpchartexample
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import android.widget.Button
-import com.xxunghee.mpchartexample.custom.CustomBarChart
-import com.xxunghee.mpchartexample.custom.CustomLineChart
+import androidx.appcompat.app.AppCompatActivity
+import androidx.databinding.DataBindingUtil
+import com.xxunghee.mpchartexample.databinding.ActivityMainBinding
 
 /**
  * Created by Sunghee Kim on 2021-08-02
  */
 class MainActivity : AppCompatActivity() {
-    private var barChartButton: Button? = null
-    private var barChart: CustomBarChart? = null
-    private var lineChartButton: Button? = null
-    private var lineChart: CustomLineChart? = null
-    private var emptyView: View? = null
+
+    private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
 
-        emptyView = findViewById(R.id.empty_view)
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_main)
+        binding.activity = this
 
-        barChart = findViewById(R.id.bar_chart)
-        barChart?.initChart()
+        binding.barChart.initChart()
 
-        barChartButton = findViewById(R.id.btn_bar_chart)
-        barChartButton?.setOnClickListener {
-            emptyView?.visibility = View.GONE
-            lineChart?.visibility = View.GONE
-            barChart?.visibility = View.VISIBLE
-            barChart?.drawRandomBarChart()
+        binding.btnBarChart.setOnClickListener {
+            binding.emptyView.visibility = View.GONE
+            binding.lineChart.visibility = View.GONE
+            binding.barChart.visibility = View.VISIBLE
+            binding.barChart.drawRandomBarChart()
         }
 
-        lineChart = findViewById(R.id.line_chart)
-        lineChart?.initChart()
+        binding.lineChart.initChart()
 
-        lineChartButton = findViewById(R.id.btn_line_chart)
-        lineChartButton?.setOnClickListener {
-            emptyView?.visibility = View.GONE
-            barChart?.visibility = View.GONE
-            lineChart?.visibility = View.VISIBLE
-            lineChart?.drawRandomLineChart()
+        binding.btnLineChart.setOnClickListener {
+            binding.emptyView.visibility = View.GONE
+            binding.barChart.visibility = View.GONE
+            binding.lineChart.visibility = View.VISIBLE
+            binding.lineChart.drawRandomLineChart()
         }
     }
 }
