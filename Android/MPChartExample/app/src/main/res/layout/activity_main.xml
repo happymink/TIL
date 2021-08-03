@@ -20,8 +20,20 @@
             android:backgroundTint="@color/teal_700"
             android:text="BAR CHART"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/btn_line_chart"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:ignore="HardcodedText" />
+
+        <Button
+            android:id="@+id/btn_line_chart"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/teal_700"
+            android:text="LINE CHART"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/btn_bar_chart"
             app:layout_constraintTop_toTopOf="parent"
             tools:ignore="HardcodedText" />
 
@@ -38,6 +50,14 @@
 
     <com.xxunghee.mpchartexample.custom.CustomBarChart
         android:id="@+id/bar_chart"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/select_layout" />
+
+    <com.xxunghee.mpchartexample.custom.CustomLineChart
+        android:id="@+id/line_chart"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:visibility="gone"
