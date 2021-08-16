@@ -8,7 +8,11 @@ import androidx.leanback.media.MediaPlayerAdapter
 import androidx.leanback.media.PlaybackTransportControlGlue
 import androidx.leanback.widget.PlaybackControlsRow
 
-/** Handles video playback with media controls. */
+/**
+ *  Handles video playback with media controls.
+ *
+ *  Modified by xxunghee on 2021-08-16
+ * */
 class PlaybackVideoFragment : VideoSupportFragment() {
 
     private lateinit var mTransportControlGlue: PlaybackTransportControlGlue<MediaPlayerAdapter>
@@ -16,7 +20,7 @@ class PlaybackVideoFragment : VideoSupportFragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val (_, title, description, _, _, videoUrl) =
+        val (_, _, title, description, _, _, videoUrl) =
             activity?.intent?.getSerializableExtra(DetailsActivity.MOVIE) as Movie
 
         val glueHost = VideoSupportFragmentGlueHost(this@PlaybackVideoFragment)

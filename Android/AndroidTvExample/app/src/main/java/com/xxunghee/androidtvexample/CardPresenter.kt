@@ -13,11 +13,13 @@ import kotlin.properties.Delegates
 /**
  * A CardPresenter is used to generate Views and bind Objects to them on demand.
  * It contains an ImageCardView.
+ *
+ * Modified by xxunghee on 2021-08-16
  */
 class CardPresenter : Presenter() {
-    private var mDefaultCardImage: Drawable? = null
     private var sSelectedBackgroundColor: Int by Delegates.notNull()
     private var sDefaultBackgroundColor: Int by Delegates.notNull()
+    private val mDefaultCardImages = mutableListOf<Drawable?>()
 
     override fun onCreateViewHolder(parent: ViewGroup): ViewHolder {
         Log.d(TAG, "onCreateViewHolder")
@@ -25,7 +27,13 @@ class CardPresenter : Presenter() {
         sDefaultBackgroundColor = ContextCompat.getColor(parent.context, R.color.default_background)
         sSelectedBackgroundColor =
             ContextCompat.getColor(parent.context, R.color.selected_background)
-        mDefaultCardImage = ContextCompat.getDrawable(parent.context, R.drawable.movie)
+
+        mDefaultCardImages.add(ContextCompat.getDrawable(parent.context, R.drawable.category_0))
+        mDefaultCardImages.add(ContextCompat.getDrawable(parent.context, R.drawable.category_1))
+        mDefaultCardImages.add(ContextCompat.getDrawable(parent.context, R.drawable.category_2))
+        mDefaultCardImages.add(ContextCompat.getDrawable(parent.context, R.drawable.category_3))
+        mDefaultCardImages.add(ContextCompat.getDrawable(parent.context, R.drawable.category_4))
+        mDefaultCardImages.add(ContextCompat.getDrawable(parent.context, R.drawable.category_5))
 
         val cardView = object : ImageCardView(parent.context) {
             override fun setSelected(selected: Boolean) {
@@ -52,7 +60,7 @@ class CardPresenter : Presenter() {
             Glide.with(viewHolder.view.context)
                 .load(movie.cardImageUrl)
                 .centerCrop()
-                .error(mDefaultCardImage)
+                .error(mDefaultCardImages[movie.category])
                 .into(cardView.mainImageView)
         }
     }

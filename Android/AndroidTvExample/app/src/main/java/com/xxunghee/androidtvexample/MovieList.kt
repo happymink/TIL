@@ -1,5 +1,10 @@
 package com.xxunghee.androidtvexample
 
+/**
+ * MovieList
+ *
+ * Modified by xxunghee on 2021-08-16
+ */
 object MovieList {
     val MOVIE_CATEGORY = arrayOf(
         "Category Zero",
@@ -61,6 +66,7 @@ object MovieList {
 
         val list = title.indices.map {
             buildMovieInfo(
+                it,
                 title[it],
                 description,
                 studio[it],
@@ -74,6 +80,7 @@ object MovieList {
     }
 
     private fun buildMovieInfo(
+        category: Int,
         title: String,
         description: String,
         studio: String,
@@ -83,6 +90,7 @@ object MovieList {
     ): Movie {
         val movie = Movie()
         movie.id = count++
+        movie.category = category
         movie.title = title
         movie.description = description
         movie.studio = studio

@@ -44,7 +44,8 @@ private const val NUM_COLS = 15
 
 /**
  * Loads a grid of cards with movies to browse.
- * Refactored by xxunghee on 2021-08-16
+ *
+ * Modified by xxunghee on 2021-08-16
  */
 class MainFragment : BrowseSupportFragment() {
     private val mHandler = Handler(Looper.getMainLooper())
@@ -102,21 +103,31 @@ class MainFragment : BrowseSupportFragment() {
     private fun loadRows() {
         var list = MovieList.list
 
+        /**
+         * Load movies
+         */
         val rowsAdapter = ArrayObjectAdapter(ListRowPresenter())
         val cardPresenter = CardPresenter()
 
         for (i in 0 until NUM_ROWS) {
-            if (i != 0) {
-                list = list.shuffled()
-            }
             val listRowAdapter = ArrayObjectAdapter(cardPresenter)
-            for (j in 0 until NUM_COLS) {
-                listRowAdapter.add(list[j % 5])
+            if(i == 5) {
+                list = list.shuffled()
+                for (j in 0 until NUM_COLS) {
+                    listRowAdapter.add(list[j%5])
+                }
+            } else {
+                for (j in 0 until NUM_COLS) {
+                    listRowAdapter.add(list[i])
+                }
             }
             val header = HeaderItem(i.toLong(), MovieList.MOVIE_CATEGORY[i])
             rowsAdapter.add(ListRow(header, listRowAdapter))
         }
 
+        /**
+         * Load preferences
+         */
         val gridHeader = HeaderItem(NUM_ROWS.toLong(), "PREFERENCES")
 
         val mGridPresenter = GridItemPresenter()
@@ -216,6 +227,9 @@ class MainFragment : BrowseSupportFragment() {
         }
     }
 
+    /**
+     * PREFERENCES 탭의 항목들
+     */
     private inner class GridItemPresenter : Presenter() {
         override fun onCreateViewHolder(parent: ViewGroup): ViewHolder {
             val view = TextView(parent.context)
