@@ -1,6 +1,5 @@
 package com.xxunghee.androidtvexample
 
-import java.util.Collections
 import java.util.Timer
 import java.util.TimerTask
 
@@ -9,6 +8,7 @@ import android.graphics.Color
 import android.graphics.drawable.Drawable
 import android.os.Bundle
 import android.os.Handler
+import android.os.Looper
 import androidx.leanback.app.BackgroundManager
 import androidx.leanback.app.BrowseSupportFragment
 import androidx.leanback.widget.ArrayObjectAdapter
@@ -31,7 +31,7 @@ import android.widget.TextView
 import android.widget.Toast
 
 import com.bumptech.glide.Glide
-import com.bumptech.glide.request.target.SimpleTarget
+import com.bumptech.glide.request.target.CustomTarget
 import com.bumptech.glide.request.transition.Transition
 
 private const val TAG = "MainFragment"
@@ -44,10 +44,10 @@ private const val NUM_COLS = 15
 
 /**
  * Loads a grid of cards with movies to browse.
+ * Refactored by xxunghee on 2021-08-16
  */
 class MainFragment : BrowseSupportFragment() {
-
-    private val mHandler = Handler()
+    private val mHandler = Handler(Looper.getMainLooper())
     private lateinit var mBackgroundManager: BackgroundManager
     private var mDefaultBackground: Drawable? = null
     private lateinit var mMetrics: DisplayMetrics
@@ -74,12 +74,17 @@ class MainFragment : BrowseSupportFragment() {
     }
 
     private fun prepareBackgroundManager() {
-
         mBackgroundManager = BackgroundManager.getInstance(activity)
         mBackgroundManager.attach(requireActivity().window)
         mDefaultBackground = ContextCompat.getDrawable(requireContext(), R.drawable.default_background)
         mMetrics = DisplayMetrics()
-        requireActivity().windowManager.defaultDisplay.getMetrics(mMetrics)
+
+        if(android.os.Build.VERSION.SDK_INT >= 30) {
+            activity?.display?.getRealMetrics(mMetrics)
+        } else {
+            @Suppress("DEPRECATION")
+            activity?.windowManager?.defaultDisplay?.getMetrics(mMetrics)
+        }
     }
 
     private fun setupUIElements() {
@@ -95,14 +100,14 @@ class MainFragment : BrowseSupportFragment() {
     }
 
     private fun loadRows() {
-        val list = MovieList.list
+        var list = MovieList.list
 
         val rowsAdapter = ArrayObjectAdapter(ListRowPresenter())
         val cardPresenter = CardPresenter()
 
         for (i in 0 until NUM_ROWS) {
             if (i != 0) {
-                Collections.shuffle(list)
+                list = list.shuffled()
             }
             val listRowAdapter = ArrayObjectAdapter(cardPresenter)
             for (j in 0 until NUM_COLS) {
@@ -129,7 +134,7 @@ class MainFragment : BrowseSupportFragment() {
             Toast.makeText(requireContext(), "Implement your own in-app search", Toast.LENGTH_LONG)
                 .show()
         }
-
+        // TODO: Implement search view
         onItemViewClickedListener = ItemViewClickedListener()
         onItemViewSelectedListener = ItemViewSelectedListener()
     }
@@ -184,14 +189,16 @@ class MainFragment : BrowseSupportFragment() {
             .load(uri)
             .centerCrop()
             .error(mDefaultBackground)
-            .into<SimpleTarget<Drawable>>(
-                object : SimpleTarget<Drawable>(width, height) {
+            .into<CustomTarget<Drawable>>(
+                object : CustomTarget<Drawable>(width, height) {
                     override fun onResourceReady(
                         drawable: Drawable,
                         transition: Transition<in Drawable>?
                     ) {
                         mBackgroundManager.drawable = drawable
                     }
+
+                    override fun onLoadCleared(placeholder: Drawable?) { }
                 })
         mBackgroundTimer?.cancel()
     }
