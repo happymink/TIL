@@ -66,6 +66,9 @@ class MainFragment : BrowseSupportFragment() {
         loadRows()
 
         setupEventListeners()
+
+        val intent = Intent(requireContext(), PlaybackActivity::class.java)
+        startActivity(intent)
     }
 
     override fun onDestroy() {
