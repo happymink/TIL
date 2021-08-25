@@ -1,4 +1,4 @@
-package com.xxunghee.androidtvexample
+package com.xxunghee.androidtvexample.data
 
 import java.io.Serializable
 

@@ -1,6 +1,7 @@
-package com.xxunghee.androidtvexample
+package com.xxunghee.androidtvexample.presenter
 
 import androidx.leanback.widget.AbstractDetailsDescriptionPresenter
+import com.xxunghee.androidtvexample.data.Movie
 
 class DetailsDescriptionPresenter : AbstractDetailsDescriptionPresenter() {
 

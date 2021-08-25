@@ -1,9 +1,10 @@
-package com.xxunghee.androidtvexample
+package com.xxunghee.androidtvexample.view.fragment
 
 import android.os.Bundle
 import android.view.View
 
 import androidx.core.content.ContextCompat
+import com.xxunghee.androidtvexample.R
 
 /**
  * This class demonstrates how to extend [androidx.leanback.app.ErrorSupportFragment].

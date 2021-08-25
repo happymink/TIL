@@ -1,4 +1,4 @@
-package com.xxunghee.androidtvexample
+package com.xxunghee.androidtvexample.util
 
 import android.content.Context
 import androidx.leanback.media.MediaPlayerAdapter

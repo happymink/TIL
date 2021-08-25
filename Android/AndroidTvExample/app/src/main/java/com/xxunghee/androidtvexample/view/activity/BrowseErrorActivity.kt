@@ -1,4 +1,4 @@
-package com.xxunghee.androidtvexample
+package com.xxunghee.androidtvexample.view.activity
 
 import android.os.Bundle
 import android.os.Handler
@@ -10,6 +10,9 @@ import android.widget.FrameLayout
 import android.widget.ProgressBar
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
+import com.xxunghee.androidtvexample.view.fragment.ErrorFragment
+import com.xxunghee.androidtvexample.view.fragment.MainFragment
+import com.xxunghee.androidtvexample.R
 
 /**
  * BrowseErrorActivity shows how to use ErrorFragment.

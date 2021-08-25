@@ -1,4 +1,4 @@
-package com.xxunghee.androidtvexample
+package com.xxunghee.androidtvexample.view.fragment
 
 import android.content.Context
 import android.content.Intent
@@ -30,6 +30,14 @@ import android.widget.Toast
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.target.SimpleTarget
 import com.bumptech.glide.request.transition.Transition
+import com.xxunghee.androidtvexample.presenter.CardPresenter
+import com.xxunghee.androidtvexample.presenter.DetailsDescriptionPresenter
+import com.xxunghee.androidtvexample.R
+import com.xxunghee.androidtvexample.data.Movie
+import com.xxunghee.androidtvexample.data.MovieList
+import com.xxunghee.androidtvexample.view.activity.DetailsActivity
+import com.xxunghee.androidtvexample.view.activity.MainActivity
+import com.xxunghee.androidtvexample.view.activity.PlaybackActivity
 
 import java.util.Collections
 import kotlin.math.roundToInt
@@ -89,7 +97,9 @@ class VideoDetailsFragment : DetailsSupportFragment() {
     private fun setupDetailsOverviewRow() {
         Log.d(TAG, "doInBackground: " + mSelectedMovie?.toString())
         val row = DetailsOverviewRow(mSelectedMovie)
-        row.imageDrawable = ContextCompat.getDrawable(requireContext(), R.drawable.default_background)
+        row.imageDrawable = ContextCompat.getDrawable(requireContext(),
+            R.drawable.default_background
+        )
         val width = convertDpToPixel(requireContext(), DETAIL_THUMB_WIDTH)
         val height = convertDpToPixel(requireContext(), DETAIL_THUMB_HEIGHT)
         Glide.with(requireContext())

@@ -1,4 +1,4 @@
-package com.xxunghee.androidtvexample
+package com.xxunghee.androidtvexample.view.fragment
 
 import java.util.Timer
 import java.util.TimerTask
@@ -33,6 +33,13 @@ import android.widget.Toast
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.target.CustomTarget
 import com.bumptech.glide.request.transition.Transition
+import com.xxunghee.androidtvexample.presenter.CardPresenter
+import com.xxunghee.androidtvexample.R
+import com.xxunghee.androidtvexample.data.Movie
+import com.xxunghee.androidtvexample.data.MovieList
+import com.xxunghee.androidtvexample.view.activity.BrowseErrorActivity
+import com.xxunghee.androidtvexample.view.activity.DetailsActivity
+import com.xxunghee.androidtvexample.view.activity.PlaybackActivity
 
 private const val TAG = "MainFragment"
 
@@ -80,7 +87,9 @@ class MainFragment : BrowseSupportFragment() {
     private fun prepareBackgroundManager() {
         mBackgroundManager = BackgroundManager.getInstance(activity)
         mBackgroundManager.attach(requireActivity().window)
-        mDefaultBackground = ContextCompat.getDrawable(requireContext(), R.drawable.default_background)
+        mDefaultBackground = ContextCompat.getDrawable(requireContext(),
+            R.drawable.default_background
+        )
         mMetrics = DisplayMetrics()
 
         if(android.os.Build.VERSION.SDK_INT >= 30) {

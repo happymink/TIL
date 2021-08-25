@@ -1,7 +1,9 @@
-package com.xxunghee.androidtvexample
+package com.xxunghee.androidtvexample.view.activity
 
 import android.os.Bundle
 import androidx.fragment.app.FragmentActivity
+import com.xxunghee.androidtvexample.R
+import com.xxunghee.androidtvexample.view.fragment.VideoDetailsFragment
 
 /**
  * Details activity class that loads [VideoDetailsFragment] class.

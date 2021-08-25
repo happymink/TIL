@@ -1,9 +1,11 @@
-package com.xxunghee.androidtvexample
+package com.xxunghee.androidtvexample.view.activity
 
 import android.os.Bundle
 import android.view.KeyEvent
 import android.widget.Toast
 import androidx.fragment.app.FragmentActivity
+import com.xxunghee.androidtvexample.view.fragment.MainFragment
+import com.xxunghee.androidtvexample.R
 
 /**
  * Loads [MainFragment].

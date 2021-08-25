@@ -1,4 +1,4 @@
-package com.xxunghee.androidtvexample
+package com.xxunghee.androidtvexample.view.fragment
 
 import android.net.Uri
 import android.os.Bundle
@@ -7,6 +7,9 @@ import androidx.leanback.app.VideoSupportFragmentGlueHost
 import androidx.leanback.media.MediaPlayerAdapter
 import androidx.leanback.media.PlaybackTransportControlGlue
 import androidx.leanback.widget.PlaybackControlsRow
+import com.xxunghee.androidtvexample.util.CustomGlue
+import com.xxunghee.androidtvexample.data.Movie
+import com.xxunghee.androidtvexample.view.activity.DetailsActivity
 
 /**
  *  Handles video playback with media controls.
