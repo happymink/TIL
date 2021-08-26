@@ -44,7 +44,14 @@ class PlaybackVideoFragment : VideoSupportFragment() {
         mTransportControlGlue.playWhenPrepared()
 
         playerAdapter.setDataSource(Uri.parse(videoUrl))
+
+        hideControlsOverlay(false) // control overlay 비활성화(2)
     }
+
+    /**
+     * [참조](http://commondatastorage.googleapis.com/android-tv/Sample%20videos/Zeitgeist/Zeitgeist%202010_%20Year%20in%20Review.mp4)
+     */
+    override fun showControlsOverlay(runAnimation: Boolean) { } // control overlay 비활성화(1)
 
     override fun onPause() {
         super.onPause()
