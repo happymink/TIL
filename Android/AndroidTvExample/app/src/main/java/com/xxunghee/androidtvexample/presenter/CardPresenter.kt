@@ -62,7 +62,7 @@ class CardPresenter : Presenter() {
             Glide.with(viewHolder.view.context)
                 .load(movie.cardImageUrl)
                 .centerCrop()
-                .error(mDefaultCardImages[movie.category])
+                .error(mDefaultCardImages[movie.category % 6])
                 .into(cardView.mainImageView)
         }
     }

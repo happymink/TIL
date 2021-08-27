@@ -46,8 +46,8 @@ private const val TAG = "MainFragment"
 private const val BACKGROUND_UPDATE_DELAY = 300
 private const val GRID_ITEM_WIDTH = 200
 private const val GRID_ITEM_HEIGHT = 200
-private const val NUM_ROWS = 6
-private const val NUM_COLS = 15
+private const val NUM_ROWS = 3
+private const val NUM_COLS = 10
 
 /**
  * Loads a grid of cards with movies to browse.
@@ -123,15 +123,9 @@ class MainFragment : BrowseSupportFragment() {
 
         for (i in 0 until NUM_ROWS) {
             val listRowAdapter = ArrayObjectAdapter(cardPresenter)
-            if(i == 5) {
-                list = list.shuffled()
-                for (j in 0 until NUM_COLS) {
-                    listRowAdapter.add(list[j%5])
-                }
-            } else {
-                for (j in 0 until NUM_COLS) {
-                    listRowAdapter.add(list[i])
-                }
+            list = list.shuffled()
+            for(j in 0 until NUM_COLS) {
+                listRowAdapter.add(list[j])
             }
             val header = HeaderItem(i.toLong(), MovieList.MOVIE_CATEGORY[i])
             rowsAdapter.add(ListRow(header, listRowAdapter))
