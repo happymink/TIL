@@ -34,9 +34,7 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import org.appspot.apprtc.AppRTCClient.SignalingParameters;
-import org.appspot.apprtc.RecordedAudioToFileController;
-import org.webrtc.AddIceObserver;
+import com.xxunghee.android.webrtcexample.AppRTCClient.SignalingParameters;
 import org.webrtc.AudioSource;
 import org.webrtc.AudioTrack;
 import org.webrtc.CameraVideoCapturer;
@@ -822,16 +820,7 @@ public class PeerConnectionClient {
         if (queuedRemoteCandidates != null) {
           queuedRemoteCandidates.add(candidate);
         } else {
-          peerConnection.addIceCandidate(candidate, new AddIceObserver() {
-            @Override
-            public void onAddSuccess() {
-              Log.d(TAG, "Candidate " + candidate + " successfully added.");
-            }
-            @Override
-            public void onAddFailure(String error) {
-              Log.d(TAG, "Candidate " + candidate + " addition failed: " + error);
-            }
-          });
+          peerConnection.addIceCandidate(candidate);
         }
       }
     });
@@ -1155,16 +1144,7 @@ public class PeerConnectionClient {
     if (queuedRemoteCandidates != null) {
       Log.d(TAG, "Add " + queuedRemoteCandidates.size() + " remote candidates");
       for (IceCandidate candidate : queuedRemoteCandidates) {
-        peerConnection.addIceCandidate(candidate, new AddIceObserver() {
-          @Override
-          public void onAddSuccess() {
-            Log.d(TAG, "Candidate " + candidate + " successfully added.");
-          }
-          @Override
-          public void onAddFailure(String error) {
-            Log.d(TAG, "Candidate " + candidate + " addition failed: " + error);
-          }
-        });
+        peerConnection.addIceCandidate(candidate);
       }
       queuedRemoteCandidates = null;
     }
@@ -1311,9 +1291,6 @@ public class PeerConnectionClient {
 
     @Override
     public void onAddTrack(final RtpReceiver receiver, final MediaStream[] mediaStreams) {}
-
-    @Override
-    public void onRemoveTrack(final RtpReceiver receiver) {}
   }
 
   // Implementation detail: handle offer creation/signaling and answer setting,

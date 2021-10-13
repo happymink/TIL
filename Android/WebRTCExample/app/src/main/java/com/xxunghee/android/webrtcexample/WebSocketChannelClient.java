@@ -20,8 +20,8 @@ import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.List;
-import org.appspot.apprtc.util.AsyncHttpURLConnection;
-import org.appspot.apprtc.util.AsyncHttpURLConnection.AsyncHttpEvents;
+import com.xxunghee.android.webrtcexample.util.AsyncHttpURLConnection;
+import com.xxunghee.android.webrtcexample.util.AsyncHttpURLConnection.AsyncHttpEvents;
 import org.json.JSONException;
 import org.json.JSONObject;
 

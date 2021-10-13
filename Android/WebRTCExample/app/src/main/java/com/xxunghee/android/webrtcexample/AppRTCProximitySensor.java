@@ -18,7 +18,7 @@ import android.hardware.SensorManager;
 import android.os.Build;
 import android.util.Log;
 import androidx.annotation.Nullable;
-import org.appspot.apprtc.util.AppRTCUtils;
+import com.xxunghee.android.webrtcexample.util.AppRTCUtils;
 import org.webrtc.ThreadUtils;
 
 /**
