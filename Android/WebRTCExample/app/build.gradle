@@ -9,7 +9,7 @@ android {
     defaultConfig {
         applicationId "kr.dnx.android.tv.webrtcexample"
         minSdk 24
-        targetSdk 30
+        targetSdk 29
         versionCode 1
         versionName "1.0"
 
@@ -39,4 +39,8 @@ dependencies {
     testImplementation 'junit:junit:4.+'
     androidTestImplementation 'androidx.test.ext:junit:1.1.3'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.4.0'
+
+    // AppRTC
+    implementation 'org.webrtc:google-webrtc:1.0.+'
+    implementation files('libs/autobanh.jar')
 }
