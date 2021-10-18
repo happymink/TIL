@@ -20,7 +20,7 @@ abstract class GeoDatabase : RoomDatabase() {
                             it.applicationContext,
                             GeoDatabase::class.java,
                             "geo_db"
-                        ).build()
+                        ).allowMainThreadQueries().build()
                     }
                 }
             }
