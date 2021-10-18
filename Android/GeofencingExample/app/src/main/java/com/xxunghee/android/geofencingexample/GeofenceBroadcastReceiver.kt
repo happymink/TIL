@@ -8,8 +8,15 @@ import android.widget.Toast
 import com.google.android.gms.location.Geofence
 import com.google.android.gms.location.GeofenceStatusCodes
 import com.google.android.gms.location.GeofencingEvent
+import com.xxunghee.android.geofencingexample.data.GeoDatabase
+import com.xxunghee.android.geofencingexample.data.GeoEntity
+import com.xxunghee.android.geofencingexample.data.getDate
+import com.xxunghee.android.geofencingexample.data.getTime
+import java.util.*
 
 class GeofenceBroadcastReceiver : BroadcastReceiver() {
+    private var db: GeoDatabase? = null
+
     override fun onReceive(context: Context?, intent: Intent?) {
         val geofencingEvent = GeofencingEvent.fromIntent(intent)
         if (geofencingEvent.hasError()) {
@@ -24,14 +31,20 @@ class GeofenceBroadcastReceiver : BroadcastReceiver() {
             Geofence.GEOFENCE_TRANSITION_EXIT -> {
                 val triggeringGeofences = geofencingEvent.triggeringGeofences
 
-                val transitionMsg = when (geofenceTransition) {
-                    Geofence.GEOFENCE_TRANSITION_ENTER -> "Enter"
-                    Geofence.GEOFENCE_TRANSITION_EXIT -> "Exit"
+                val status = when (geofenceTransition) {
+                    Geofence.GEOFENCE_TRANSITION_ENTER -> "출근"
+                    Geofence.GEOFENCE_TRANSITION_EXIT -> "퇴근"
                     else -> "-"
                 }
                 triggeringGeofences.forEach {
-                    Toast.makeText(context, "${it.requestId} - $transitionMsg", Toast.LENGTH_LONG)
-                        .show()
+                    Toast.makeText(context, "${it.requestId} - $status", Toast.LENGTH_LONG).show()
+                    GeoDatabase.getDatabase(context)?.geoDao()?.insert(
+                        GeoEntity(
+                            Locale.getDefault().getDate(),
+                            Locale.getDefault().getTime(),
+                            status
+                        )
+                    )
                 }
             }
             else -> {
