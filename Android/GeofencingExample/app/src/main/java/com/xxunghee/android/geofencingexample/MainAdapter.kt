@@ -1,5 +1,6 @@
 package com.xxunghee.android.geofencingexample
 
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -27,7 +28,10 @@ class MainAdapter(private val dataList: List<GeoEntity>) : RecyclerView.Adapter<
         return position
     }
 
-    class ViewHolder(private val itemView: View) : RecyclerView.ViewHolder(itemView) {
+    class ViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        private val inColor = "#E7FFAC"
+        private val outColor = "#FFCBC1"
+
         private val tvDate: TextView = itemView.findViewById(R.id.tv_date)
         private val tvTime: TextView = itemView.findViewById(R.id.tv_time)
         private val tvStatue: TextView = itemView.findViewById(R.id.tv_status)
@@ -36,6 +40,15 @@ class MainAdapter(private val dataList: List<GeoEntity>) : RecyclerView.Adapter<
             tvDate.text = data.date
             tvTime.text = data.time
             tvStatue.text = data.status
+
+            when(data.status) {
+                "출근" -> {
+                    itemView.setBackgroundColor(Color.parseColor(inColor))
+                }
+                "퇴근" -> {
+                    itemView.setBackgroundColor(Color.parseColor(outColor))
+                }
+            }
         }
     }
 }
