@@ -95,10 +95,9 @@ class MainActivity : AppCompatActivity() {
                         arrayOf(Manifest.permission.ACCESS_BACKGROUND_LOCATION),
                         REQ_ACCESS_BACKGROUND_LOCATION
                     )
-                else addGeofenceList("회사", 37.413252, 127.099763)
             }
             else -> {
-                addGeofenceList("회사", 37.413252, 127.099763)
+                addGeofenceList("회사", 37.4138903, 127.0995103)
             }
         }
     }
@@ -108,9 +107,11 @@ class MainActivity : AppCompatActivity() {
             Geofence.Builder().setRequestId(reqId)
                 .setCircularRegion(latitude, longitude, Constants.GEOFENCE_RADIUS_IN_METERS)
                 .setExpirationDuration(Geofence.NEVER_EXPIRE)
+                .setLoiteringDelay(60000)
                 .setTransitionTypes(
                     Geofence.GEOFENCE_TRANSITION_ENTER
                             or Geofence.GEOFENCE_TRANSITION_EXIT
+                            or Geofence.GEOFENCE_TRANSITION_DWELL
                 )
                 .build()
         )
@@ -135,7 +136,6 @@ class MainActivity : AppCompatActivity() {
 
     private fun getGeofenceRequest(): GeofencingRequest {
         return GeofencingRequest.Builder().apply {
-            setInitialTrigger(GeofencingRequest.INITIAL_TRIGGER_ENTER)
             addGeofences(geofenceList)
         }.build()
     }

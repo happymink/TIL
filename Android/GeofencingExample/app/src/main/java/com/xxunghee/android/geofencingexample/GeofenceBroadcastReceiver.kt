@@ -28,7 +28,8 @@ class GeofenceBroadcastReceiver : BroadcastReceiver() {
 
         when (val geofenceTransition = geofencingEvent.geofenceTransition) {
             Geofence.GEOFENCE_TRANSITION_ENTER,
-            Geofence.GEOFENCE_TRANSITION_EXIT -> {
+            Geofence.GEOFENCE_TRANSITION_EXIT,
+            Geofence.GEOFENCE_TRANSITION_DWELL -> {
                 val triggeringGeofences = geofencingEvent.triggeringGeofences
 
                 val status = when (geofenceTransition) {
@@ -38,6 +39,7 @@ class GeofenceBroadcastReceiver : BroadcastReceiver() {
                 }
                 triggeringGeofences.forEach {
                     Toast.makeText(context, "${it.requestId} - $status", Toast.LENGTH_LONG).show()
+                    Log.e("###", "receive event $status")
                     GeoDatabase.getDatabase(context)?.geoDao()?.insert(
                         GeoEntity(
                             Locale.getDefault().getDate(),
