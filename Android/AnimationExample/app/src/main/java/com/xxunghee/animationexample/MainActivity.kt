@@ -12,6 +12,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var container: FragmentContainerView
     private lateinit var layoutButton: ConstraintLayout
     private lateinit var btnWink: Button
+    private lateinit var btnZoom: Button
 
     override fun onBackPressed() {
         when(container.visibility) {
@@ -32,6 +33,11 @@ class MainActivity : AppCompatActivity() {
         btnWink = findViewById(R.id.btn_wink)
         btnWink.setOnClickListener {
             changeFragment(WinkFragment())
+        }
+
+        btnZoom = findViewById(R.id.btn_zoom)
+        btnZoom.setOnClickListener {
+            changeFragment(ZoomFragment())
         }
     }
 
